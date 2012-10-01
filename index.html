@@ -1,0 +1,390 @@
+<?php
+include ("paramloader.php");
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+    <title>Bezlimitniki.ru</title>
+    <meta name="keywords" content="123"/>
+    <meta name="description" content="123"/>
+    <base href=""/>
+    <link rel="stylesheet" type="text/css" href="docs/style.css" type="text/css" />
+    <link rel="stylesheet" href="docs/slider.css" type="text/css" />
+    <link rel="stylesheet" href="docs/SpryAssets/SpryTabbedPanels.css" type="text/css" />
+    <!-- нужно для таблиц с тарифами -->
+    <script src="docs/SpryAssets/SpryTabbedPanels.js" type="text/javascript"></script>
+    <!-- нужно для слайдера -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script src="http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js"></script>
+    <script src="docs/source/slides.min.jquery.js"></script>
+    <script>
+        $(function(){
+            $('#slides').slides({
+                preload: true,
+                preloadImage: 'img/loading.gif',
+                play: 5000,
+                pause: 2500,
+                hoverPause: true
+            });
+        });
+    </script>
+    <!-- ЛАМЕР НУБ! =) -->
+</head>
+<!-- ну что Ламка начнём? =) -->
+
+<body>
+<table id="main" cellspacing="0" cellpadding="0" border="0" align="center">
+<tr>
+    <td colspan="3">
+        <a href="/"><img class="logo" src="images/logo.png" alt="Безлимитники" title="title" /></a>
+        <menu class="top_menu">
+            <li><a href="#">Главная</a></li>
+            <li><a href="#">Тарифы</a></li>
+            <li><a href="#">Хиты</a></li>
+            <li><a href="#">Номера</a></li>
+            <li><a href="#">Как заказать</a></li>
+            <li><a href="#">Корзина</a></li>
+            <li><a href="#">Контакты</a></li>
+        </menu>
+    </td>
+</tr>
+<tr>
+    <td colspan="2" id="operators">
+        <ul>
+            <li><a href="#"><img src="images/operators/bee.png" alt="Билайн" /></a></li>
+            <li><a href="#"><img src="images/operators/megafon.png" alt="Мегафон" /></a></li>
+            <li><a href="#"><img src="images/operators/mts.png" alt="МТС" /></a></li>
+            <li><a href="#"><img src="images/operators/tt.png" alt="Туристические тарифы" /></a></li>
+            <li><a href="#"><img src="images/operators/tele2.png" alt="ТЕЛЕ 2" /></a></li>
+            <li><a href="#"><img src="images/operators/kn.png" alt="Красивые номера" /></a></li>
+            <li><a href="#"></a></li>
+        </ul>
+    </td>
+    <td rowspan="2" id="right_line" valign="top"><img src="images/right_line_img.jpg" /></td>
+</tr>
+<tr>
+<td id="left_menu" valign="top">
+    <a href="#" class="select_t">Выбрать тариф</a>
+    <ul>
+        <li><a href="#">Красивые телефонные номера</a></li>
+        <li><a href="#">Лучшие безлимитные тарифы</a></li>
+        <li><a href="#">Поддержка пользователей круглосуточно</a></li>
+        <li><a href="#">Тарифы с федеральными номерами</a></li>
+        <li><a href="#">Тарифы с прямыми номерами</a></li>
+        <li><a href="#">Лучшие тарифы</a></li>
+    </ul>
+</td>
+<td id="content" valign="top">
+<!-- КОНТЕНТ НАЧАЛО -->
+<!-- СЛАЙДЕР НАЧАЛО -->
+<div id="container">
+    <div id="example">
+        <img src="img/new-ribbon.png" width="112" height="112" alt="New Ribbon" id="ribbon"/>
+        <div id="slides">
+            <div class="slides_container">
+                <a href="#" title="145.365 - Happy Bokeh Thursday! | Flickr - Photo Sharing!" target="_blank"><img src="img/slide-1.jpg" width="570" height="270" alt="Slide 1"/></a>
+                <a href="#" title="Taxi | Flickr - Photo Sharing!" target="_blank"><img src="img/slide-2.jpg" width="570" height="270" alt="Slide 2"/></a>
+                <a href="#" title="Happy Bokeh raining Day | Flickr - Photo Sharing!" target="_blank"><img src="img/slide-3.jpg" width="570" height="270" alt="Slide 3"/></a>
+                <a href="#" title="We Eat Light | Flickr - Photo Sharing!" target="_blank"><img src="img/slide-4.jpg" width="570" height="270" alt="Slide 4"/></a>
+                <a href="#" title="“I must go down to the sea again, to the lonely sea and the sky; and all I ask is a tall ship and a star to steer her by.” | Flickr - Photo Sharing!" target="_blank"><img src="img/slide-5.jpg" width="570" height="270" alt="Slide 5"/></a>
+                <a href="#" title="twelve.inch | Flickr - Photo Sharing!" target="_blank"><img src="img/slide-6.jpg" width="570" height="270" alt="Slide 6"/></a>
+                <a href="#" title="Save my love for loneliness | Flickr - Photo Sharing!" target="_blank"><img src="img/slide-7.jpg" width="570" height="270" alt="Slide 7"/></a>
+            </div>
+            <a href="#" class="prev"><img src="img/arrow-prev.png" width="24" height="43" alt="Arrow Prev"/></a>
+            <a href="#" class="next"><img src="img/arrow-next.png" width="24" height="43" alt="Arrow Next"/></a>
+        </div>
+        <img src="img/example-frame.png" width="739" height="341" alt="Example Frame" id="frame"/>
+    </div>
+</div>
+<!-- СЛАЙДЕР КОНЕЦ -->
+
+<h1>Главный заголовок (H1)</h1>
+<p>Текст текст <a href="#" title="title">ссылка в тексте</a> текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст
+    текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст
+    текст текст текст текст текст текст текст текст текст <a href="#" title="title">ссылка в тексте</a> текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст
+    текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст
+    текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст</p>
+
+<h2>Пример списка (H2)</h2>
+<ul>
+    <li>Первый элемент</li>
+    <li>Второй Элемент</li>
+    <li>Третий элемент</li>
+    <li>Элемент с <a href="#">сылкой</a></li>
+    <li>Пятый элемент</li>
+</ul>
+
+<h2>Таблица тарифов (h2)</h2>
+<div id="TabbedPanels1" class="TabbedPanels">
+    <ul class="TabbedPanelsTabGroup">
+        <li class="TabbedPanelsTab l_bee" tabindex="0">Билайн</li>
+        <li class="TabbedPanelsTab l_meg" tabindex="0">Мегафон</li>
+        <li class="TabbedPanelsTab l_mts" tabindex="0">МТС</li>
+        <li class="TabbedPanelsTab" tabindex="0">Все</li>
+    </ul>
+    <div class="TabbedPanelsContentGroup">
+
+        <div class="TabbedPanelsContent">
+            <form action="" method="get" name="form_beeline">
+                <table border="0" cellspacing="4" cellpadding="2" class="tarifs_table">
+                    <tr>
+                        <td class="tarifs_text">Номер</td>
+                        <td class="tarifs_select">
+                            <select name="list_1">
+                                <option value="1">Первый</option>
+                                <option value="2">Второй</option>
+                                <option value="3">Третий</option>
+                                <option value="4">и т.д. и т.п.</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tarifs_text">Абонентская плата</td>
+                        <td class="tarifs_select">
+                            <select name="list_1">
+                                <option value="1">Первый</option>
+                                <option value="2">Второй</option>
+                                <option value="3">Третий</option>
+                                <option value="4">и т.д. и т.п.</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tarifs_text">Роуминг</td>
+                        <td class="tarifs_select">
+                            <select name="list_2">
+                                <option value="1">Первый</option>
+                                <option value="2">Второй</option>
+                                <option value="3">Третий</option>
+                                <option value="4">и т.д. и т.п.</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tarifs_text">Мобильный интернет</td>
+                        <td class="tarifs_select">
+                            <select name="list_3">
+                                <option value="1">Первый</option>
+                                <option value="2">Второй</option>
+                                <option value="3">Третий</option>
+                                <option value="4">и т.д. и т.п.</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tarifs_text">Дополнительные услуги</td>
+                        <td class="tarifs_select">
+                            <select name="list_4">
+                                <option value="1">Первый</option>
+                                <option value="2">Второй</option>
+                                <option value="3">Третий</option>
+                                <option value="4">и т.д. и т.п.</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="right"><input type="submit" value="Подобрать"/></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+        <div class="TabbedPanelsContent">
+            <form action="" method="get" name="form_megafon">
+                <table border="0" cellspacing="4" cellpadding="2" class="tarifs_table">
+                    <tr>
+                        <td class="tarifs_text">Номер</td>
+                        <td class="tarifs_select">
+                            <select name="list_1">
+                                <option value="1">Первый</option>
+                                <option value="2">Второй</option>
+                                <option value="3">Третий</option>
+                                <option value="4">и т.д. и т.п.</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tarifs_text">Абонентская плата</td>
+                        <td class="tarifs_select">
+                            <select name="list_1">
+                                <option value="1">Первый</option>
+                                <option value="2">Второй</option>
+                                <option value="3">Третий</option>
+                                <option value="4">и т.д. и т.п.</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tarifs_text">Роуминг</td>
+                        <td class="tarifs_select">
+                            <select name="list_2">
+                                <option value="1">Первый</option>
+                                <option value="2">Второй</option>
+                                <option value="3">Третий</option>
+                                <option value="4">и т.д. и т.п.</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tarifs_text">Мобильный интернет</td>
+                        <td class="tarifs_select">
+                            <select name="list_3">
+                                <option value="1">Первый</option>
+                                <option value="2">Второй</option>
+                                <option value="3">Третий</option>
+                                <option value="4">и т.д. и т.п.</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tarifs_text">Дополнительные услуги</td>
+                        <td class="tarifs_select">
+                            <select name="list_4">
+                                <option value="1">Первый</option>
+                                <option value="2">Второй</option>
+                                <option value="3">Третий</option>
+                                <option value="4">и т.д. и т.п.</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="right"><input type="submit" value="Подобрать"/></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+        <div class="TabbedPanelsContent">
+            Тут таже самая форма, но для MTS
+        </div>
+
+        <div class="TabbedPanelsContent">
+            Тут таже самая форма, но для ВСЕХ операторов, и да.... ЛАМЕР НУБ! =)
+        </div>
+
+    </div>
+</div>
+
+<!-- эта херь нужна для таблиц тарифов, чтобы переключались вкладки -->
+<script type="text/javascript">
+    <!--
+    var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
+    //-->
+</script>
+<div class="clear"></div>
+
+<h2>Таблица тарифов списком (h2)</h2>
+<table border="1" cellspacing="0" cellpadding="4" class="tarif_list_table">
+    <tr>
+        <th scope="col">Тариф</th>
+        <th scope="col"><img src="images/icons_mont.jpg" title="Абонентская плата в месяц"/></th>
+        <th scope="col"><img src="images/icons_sms.jpg" title="Стоимость СМС" /></th>
+        <th scope="col"><img src="images/icons_mms.jpg" title="Стоимость ММС" /></th>
+        <th scope="col"><img src="images/icons_e.jpg" title="Стоимость Интернета" /></th>
+        <th scope="col"><img src="images/icons_time.jpg" title="Разговор после пяти минут" /></th>
+        <th scope="col"><img src="images/icons_option.jpg" title="Опции" /></th>
+    </tr>
+    <tr class="gray_bg">
+        <td><span class="l_bee">Формула свободы Москва</span></td>
+        <td>1300</td>
+        <td>2890</td>
+        <td>400</td>
+        <td>1566</td>
+        <td>Без ограничений Москва + 200 МО</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td><span class="l_meg">Формула свободы Область</span></td>
+        <td>2300</td>
+        <td>4890</td>
+        <td>1200</td>
+        <td>5462</td>
+        <td>Без ограничений М + МО</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr class="gray_bg">
+        <td><span class="l_mts">Формула свободы Москва</span></td>
+        <td>1300</td>
+        <td>2890</td>
+        <td>400</td>
+        <td>1566</td>
+        <td>Без ограничений Москва + 200 МО</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td><span class="l_meg">Формула свободы Область</span></td>
+        <td>2300</td>
+        <td>4890</td>
+        <td>1200</td>
+        <td>5462</td>
+        <td>Без ограничений М + МО</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr class="gray_bg">
+        <td><span class="l_bee">Формула свободы Москва</span></td>
+        <td>1300</td>
+        <td>2890</td>
+        <td>400</td>
+        <td>1566</td>
+        <td>Без ограничений Москва + 200 МО</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td><span class="l_mts">Формула свободы Область</span></td>
+        <td>2300</td>
+        <td>4890</td>
+        <td>1200</td>
+        <td>5462</td>
+        <td>Без ограничений М + МО</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td><span class="l_meg">Формула свободы Область</span></td>
+        <td>2300</td>
+        <td>4890</td>
+        <td>1200</td>
+        <td>5462</td>
+        <td>Без ограничений М + МО</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr class="gray_bg">
+        <td><span class="l_bee">Формула свободы Москва</span></td>
+        <td>1300</td>
+        <td>2890</td>
+        <td>400</td>
+        <td>1566</td>
+        <td>Без ограничений Москва + 200 МО</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td><span class="l_mts">Формула свободы Область</span></td>
+        <td>2300</td>
+        <td>4890</td>
+        <td>1200</td>
+        <td>5462</td>
+        <td>Без ограничений М + МО</td>
+        <td>&nbsp;</td>
+    </tr>
+</table>
+
+<!-- КОНТЕНТ КОНЕЦ -->
+</td>
+</tr>
+</table>
+<div id="bottom">
+    <div class="center_bottom">
+        <menu class="top_menu">
+            <li><a href="#">Главная</a></li>
+            <li><a href="#">Тарифы</a></li>
+            <li><a href="#">Хиты</a></li>
+            <li><a href="#">Номера</a></li>
+            <li><a href="#">Как заказать</a></li>
+            <li><a href="#">Корзина</a></li>
+            <li><a href="#">Контакты</a></li>
+        </menu>
+    </div>
+</div>
+<!-- Ну что? =) Долистал до конца? =) и вот что я тебе скажу: ЛАМЕР НУБ! =) -->
+</body>
+</html>
