@@ -71,6 +71,19 @@ include_once('engine/buttonsReaction.php');
 <tr>
 <td id="left_menu" valign="top">
     <a href="#" class="select_t">Выбрать тариф</a>
+    <table border="0" cellspacing="4" cellpadding="2" class="top_cart_2">
+        <tr>
+            <td valign="bottom"><a href="/index.php?p=cart"><img src="images/cart.png" width="35" height="35" border="0" /></a></td>
+            <td valign="bottom">
+                <span>Товаров:</span> <i><?=count($_SESSION['cart']['quantity'])?'('.$_SESSION['cart']['quantity'].')':''?></i><br>
+                <span>Сумма:</span> <i><?=$_SESSION['cart']['summary']?> руб.</i><br>
+            </td>
+        </tr>
+        <tr>
+            <td height="30" colspan="2"><a href="/index.php?p=cart" class="button right">Оформить заказ</a></td>
+        </tr>
+    </table>
+    <div class="clear"></div>
 
 <?php
     //include ('blocks/cart.php');

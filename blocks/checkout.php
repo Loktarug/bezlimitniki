@@ -47,8 +47,6 @@
 <?php
                     if (isset($pack['tariff']))
                     {
-                        $summary += $pack['tariff'][1];
-                        $summary += 500;
 ?>
                         <tr>
                             <td class="first">Абонентская плата</td>
@@ -63,7 +61,6 @@
 
                     if (isset($pack['phone']))
                     {
-                        $summary += $pack['phone']['cost'];
 ?>
                         <tr>
                             <td class="first"><?=stripslashes($pack['phone']['number']);?></td>

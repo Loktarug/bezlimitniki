@@ -12,8 +12,6 @@
 <?php
                     if (isset($pack['tariff']))
                     {
-                        $summary += $pack['tariff'][1];
-                        $summary += 500;
 ?>
                         <tr>
                             <td class="first">Абонентская плата</td>
@@ -28,7 +26,6 @@
 
                     if (isset($pack['phone']))
                     {
-                        $summary += $pack['phone']['cost'];
 ?>
                         <tr>
                             <td class="first"><?=stripslashes($pack['phone']['number']);?></td>
@@ -45,5 +42,5 @@
 <?php
         }
 ?>
-    <div class="gray_line"><h3>Итого: <?=$summary?> руб.</h3><a href="/index.php?p=checkout" class="button btn_bottom">Оформить</a></div>
+    <div class="gray_line"><h3>Итого: <?=$_SESSION['cart']['summary']?> руб.</h3><a href="/index.php?p=checkout" class="button btn_bottom">Оформить</a></div>
 </div>

@@ -10,7 +10,7 @@
 
     if ($_REQUEST['p']=='tariffs' && isset($_REQUEST['tariff']))
     {
-        include ("tariff.php");
+        include_once ('tariff.php');
         include_once ('numbers.php');
     }
     if ($_REQUEST['p']=='numbers')
@@ -28,7 +28,7 @@
     }
     if ($_REQUEST['p']=='cart')
     {
-        include ('cart.php');
+        include ('blocks/cart.php');
     }
     if ($_REQUEST['p']=='delivery')
     {
