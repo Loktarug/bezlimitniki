@@ -22,7 +22,7 @@ if (isset($_GET['buy']) && in_array($_GET['buy'], $GLOBALS['buyTypes']))
     {
         if (isset($pack['tariff']))
         {
-            $summary += $pack['tariff'][1];
+            $summary += $pack['tariff'][2];
             $summary += 500;
         }
 
