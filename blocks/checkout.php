@@ -49,8 +49,8 @@
                     {
 ?>
                         <tr>
-                            <td class="first">Абонентская плата</td>
-                            <td class="last"><?=$pack['tariff'][1]?> руб.</td>
+                            <td class="first">Плата за подключение</td>
+                            <td class="last"><?=$pack['tariff'][2]?> руб.</td>
                         </tr>
                         <tr>
                             <td class="first">Минимальный первоначальный взнос</td>
