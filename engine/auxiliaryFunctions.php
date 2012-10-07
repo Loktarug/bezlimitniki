@@ -8,28 +8,32 @@ function addPhone ($phoneNumber)
 {
     //$phoneNumber = (int)$phoneNumber;
 
-    //≈ÒÎË ÚÂÎÂÙÓÌ ÌÂ int -> ‚ÂÌÛÚ¸ 0
+    //–ï—Å–ª–∏ —Ç–µ–ª–µ—Ñ–æ–Ω –Ω–µ int -> –≤–µ—Ä–Ω—É—Ç—å 0
     //if (!is_int($phoneNumber))
     //    return 0;
 
-    //≈ÒÎË Ú‡ÍÓÈ ÌÓÏÂ ÚÂÎÂÙÓÌ ÛÊÂ ‚˚·‡Ì -> ‚ÂÌÛÚ¸ 0
+    //–ï—Å–ª–∏ —Ç–∞–∫–æ–π –Ω–æ–º–µ—Ä —Ç–µ–ª–µ—Ñ–æ–Ω —É–∂–µ –≤—ã–±—Ä–∞–Ω -> –≤–µ—Ä–Ω—É—Ç—å 0
     if (in_array($phoneNumber, $_SESSION['cart']['phoneNumbers']))
         return 0;
     else
         array_push($_SESSION['cart']['phoneNumbers'],$phoneNumber);
 
 
-    //ÃÓÊÌÓ ÎË ‰Ó·‡‚ËÚ¸ ˝ÚÓÚ ÚÂÎÂÙÓÌ ÛÊÂ Í ‚˚·‡ÌÌÓÏÛ ‡ÌÂÂ Ú‡ËÙÛ
+    //–ú–æ–∂–Ω–æ –ª–∏ –¥–æ–±–∞–≤–∏—Ç—å —ç—Ç–æ—Ç —Ç–µ–ª–µ—Ñ–æ–Ω —É–∂–µ –∫ –≤—ã–±—Ä–∞–Ω–Ω–æ–º—É —Ä–∞–Ω–µ–µ —Ç–∞—Ä–∏—Ñ—É
     $phoneInfo = dbGetPhoneByNumberInt(array('numberint' => $phoneNumber));
 
     foreach ($_SESSION['cart']['packes'] as &$pack)
     {
-        //≈ÒÎË ÚÂÎÂÙÓÌ ÌÂ ÔËÍÂÔÎÂÌ Í Ú‡ËÙÛ, Ë Ú‡ËÙ ÒÓÓÚ‚ÂÚÒÚ‚ÛÂÚ ÓÔÂ‡ÚÓÛ ÚÂÎÂÙÓÌ‡, ÚÓ ‰Ó·‡‚ËÚ¸ ÚÂÎÂÙÓÌ Ë ‚˚ÈÚË ËÁ ÙÛÌÍˆËË
+        //–ï—Å–ª–∏ —Ç–µ–ª–µ—Ñ–æ–Ω –Ω–µ –ø—Ä–∏–∫—Ä–µ–ø–ª–µ–Ω –∫ —Ç–∞—Ä–∏—Ñ—É, –∏ —Ç–∞—Ä–∏—Ñ —Å–æ–æ—Ç–≤–µ—Ç—Å—Ç–≤—É–µ—Ç –æ–ø–µ—Ä–∞—Ç–æ—Ä—É —Ç–µ–ª–µ—Ñ–æ–Ω–∞, —Ç–æ –¥–æ–±–∞–≤–∏—Ç—å —Ç–µ–ª–µ—Ñ–æ–Ω –∏ –≤—ã–π—Ç–∏ –∏–∑ —Ñ—É–Ω–∫—Ü–∏–∏
         if (!isset($pack['phone']) && $pack['tariff']['idOperator'] == $phoneInfo['idOperator'])
         {
             if (($phoneInfo['numberType'] == 1 && $pack['tariff']['isFederal'] == 1) || ($phoneInfo['numberType'] == 2 && $pack['tariff']['isDirect'] == 1))
             {
                 $pack['phone'] = $phoneInfo;
+
+                //–î–æ–±–∞–≤–ª—è–µ–º –∏–Ω—Ñ–æ—Ä–º–∞—Ü–∏—é –æ –ø–æ—Å–ª–µ–¥–Ω–µ–º –¥–æ–±–∞–≤–ª–µ–Ω–Ω–æ–º –ø–∞–∫–µ—Ç–µ. –≠—Ç–æ –Ω—É–∂–Ω–æ –¥–ª—è –≤—ã–≤–æ–¥–∞ –º–æ–¥–∞–ª—å–Ω–æ–≥–æ –æ–∫–Ω–∞
+                $_SESSION['cart']['latest'] = $pack;
+
                 $_SESSION['cart']['quantity']++;
                 return 1;
             }
@@ -37,39 +41,149 @@ function addPhone ($phoneNumber)
         }
     }
 
-    //≈ÒÎË ÌÂ Ì‡È‰ÂÌ ÔÓ‰ıÓ‰ˇ˘ËÈ Ú‡ËÙ, ‰Ó·‡‚ÎˇÂÚ ÌÓ‚˚È Ô‡ÍÂÚ
+    //–ï—Å–ª–∏ –Ω–µ –Ω–∞–π–¥–µ–Ω –ø–æ–¥—Ö–æ–¥—è—â–∏–π —Ç–∞—Ä–∏—Ñ, –¥–æ–±–∞–≤–ª—è–µ—Ç –Ω–æ–≤—ã–π –ø–∞–∫–µ—Ç
     array_push($_SESSION['cart']['packes'], array('phone' => $phoneInfo));
+
+    //–î–æ–±–∞–≤–ª—è–µ–º –∏–Ω—Ñ–æ—Ä–º–∞—Ü–∏—é –æ –ø–æ—Å–ª–µ–¥–Ω–µ–º –¥–æ–±–∞–≤–ª–µ–Ω–Ω–æ–º —Ç–µ–ª–µ—Ñ–æ–Ω–µ. –≠—Ç–æ –Ω—É–∂–Ω–æ –¥–ª—è –≤—ã–≤–æ–¥–∞ –º–æ–¥–∞–ª—å–Ω–æ–≥–æ –æ–∫–Ω–∞
+    $_SESSION['cart']['latest']['phone'] = $phoneInfo;
+
     $_SESSION['cart']['quantity']++;
     return 1;
 }
+
+function removePhone ($idPack, $phoneNumber)
+{
+    $idPack = (int)$idPack;
+    if (!is_int($idPack))
+        return 0;
+
+    if ($_SESSION['cart']['packes'][$idPack]['phone']['numberint'] == $phoneNumber)
+    {
+        $_SESSION['cart']['quantity']--;
+        unset($_SESSION['cart']['phoneNumbers'][array_search($phoneNumber, $_SESSION['cart']['phoneNumbers'])]);
+        if (isset($_SESSION['cart']['packes'][$idPack]['tariff']))
+            unset ($_SESSION['cart']['packes'][$idPack]['phone']);
+        else
+            unset ($_SESSION['cart']['packes'][$idPack]);
+    }
+}
+
 
 function addTariff ($idTariff)
 {
     $idTariff = (int)$idTariff;
 
-    //≈ÒÎË Ú‡ËÙ ÌÂ int -> ‚ÂÌÛÚ¸ 0
+    //–ï—Å–ª–∏ —Ç–∞—Ä–∏—Ñ –Ω–µ int -> –≤–µ—Ä–Ω—É—Ç—å 0
     if (!is_int($idTariff))
         return 0;
 
-    //ÃÓÊÌÓ ÎË ‰Ó·‡‚ËÚ¸ ˝ÚÓÚ Ú‡ËÙ ÛÊÂ Í ‚˚·‡ÌÌÓÏÛ ‡ÌÂÂ ÚÂÎÂÙÓÌÛ
+    //–ú–æ–∂–Ω–æ –ª–∏ –¥–æ–±–∞–≤–∏—Ç—å —ç—Ç–æ—Ç —Ç–∞—Ä–∏—Ñ —É–∂–µ –∫ –≤—ã–±—Ä–∞–Ω–Ω–æ–º—É —Ä–∞–Ω–µ–µ —Ç–µ–ª–µ—Ñ–æ–Ω—É
     $tariffInfo = dbGetTariffCommonInfo(array('idTariff' => $idTariff));
 
     foreach ($_SESSION['cart']['packes'] as &$pack)
     {
-        //≈ÒÎË ÚÂÎÂÙÓÌ ÌÂ ÔËÍÂÔÎÂÌ Í Ú‡ËÙÛ, Ë Ú‡ËÙ ÒÓÓÚ‚ÂÚÒÚ‚ÛÂÚ ÓÔÂ‡ÚÓÛ ÚÂÎÂÙÓÌ‡, ÚÓ ‰Ó·‡‚ËÚ¸ ÚÂÎÂÙÓÌ Ë ‚˚ÈÚË ËÁ ÙÛÌÍˆËË
+        //–ï—Å–ª–∏ —Ç–µ–ª–µ—Ñ–æ–Ω –Ω–µ –ø—Ä–∏–∫—Ä–µ–ø–ª–µ–Ω –∫ —Ç–∞—Ä–∏—Ñ—É, –∏ —Ç–∞—Ä–∏—Ñ —Å–æ–æ—Ç–≤–µ—Ç—Å—Ç–≤—É–µ—Ç –æ–ø–µ—Ä–∞—Ç–æ—Ä—É —Ç–µ–ª–µ—Ñ–æ–Ω–∞, —Ç–æ –¥–æ–±–∞–≤–∏—Ç—å —Ç–µ–ª–µ—Ñ–æ–Ω –∏ –≤—ã–π—Ç–∏ –∏–∑ —Ñ—É–Ω–∫—Ü–∏–∏
         if (!isset($pack['tariff']) && $pack['phone']['idOperator'] == $tariffInfo['idOperator'])
         {
             if (($tariffInfo['isFederal'] == 1 && $pack['phone']['numberType'] == 1) || ($tariffInfo['isDirect'] == 1 && $pack['phone']['numberType'] == 2))
             {
                 $pack['tariff'] = $tariffInfo;
+
+                //–î–æ–±–∞–≤–ª—è–µ–º –∏–Ω—Ñ–æ—Ä–º–∞—Ü–∏—é –æ –ø–æ—Å–ª–µ–¥–Ω–µ–º –¥–æ–±–∞–≤–ª–µ–Ω–Ω–æ–º –ø–∞–∫–µ—Ç–µ. –≠—Ç–æ –Ω—É–∂–Ω–æ –¥–ª—è –≤—ã–≤–æ–¥–∞ –º–æ–¥–∞–ª—å–Ω–æ–≥–æ –æ–∫–Ω–∞
+                $_SESSION['cart']['latest'] = $pack;
+
                 $_SESSION['cart']['quantity']++;
                 return 1;
             }
         }
     }
 
-    //≈ÒÎË ÌÂ Ì‡È‰ÂÌ ÔÓ‰ıÓ‰ˇ˘ËÈ Ú‡ËÙ, ‰Ó·‡‚ÎˇÂÚ ÌÓ‚˚È Ô‡ÍÂÚ
+    //–ï—Å–ª–∏ –Ω–µ –Ω–∞–π–¥–µ–Ω –ø–æ–¥—Ö–æ–¥—è—â–∏–π —Ç–∞—Ä–∏—Ñ, –¥–æ–±–∞–≤–ª—è–µ—Ç –Ω–æ–≤—ã–π –ø–∞–∫–µ—Ç
     array_push($_SESSION['cart']['packes'], array('tariff' => $tariffInfo));
+
+    //–î–æ–±–∞–≤–ª—è–µ–º –∏–Ω—Ñ–æ—Ä–º–∞—Ü–∏—é –æ –ø–æ—Å–ª–µ–¥–Ω–µ–º –¥–æ–±–∞–≤–ª–µ–Ω–Ω–æ–º —Ç–∞—Ä–∏—Ñ–µ. –≠—Ç–æ –Ω—É–∂–Ω–æ –¥–ª—è –≤—ã–≤–æ–¥–∞ –º–æ–¥–∞–ª—å–Ω–æ–≥–æ –æ–∫–Ω–∞
+    $_SESSION['cart']['latest']['tariff'] = $tariffInfo;
+
     $_SESSION['cart']['quantity']++;
     return 1;
+}
+
+function removeTariff ($idPack, $idTariff)
+{
+    $idTariff = (int)$idTariff;
+    $idPack = (int)$idPack;
+
+    if (!(is_int($idTariff) && is_int($idPack)))
+        return 0;
+
+    if (($_SESSION['cart']['packes'][$idPack]['tariff']['id'] == $idTariff) && $idTariff>0)
+    {
+        $_SESSION['cart']['quantity']--;
+        if (isset($_SESSION['cart']['packes'][$idPack]['phone']))
+        {
+            $_SESSION['cart']['quantity']--;
+            unset($_SESSION['cart']['packes'][$idPack]);
+        }
+        else
+        {
+            unset($_SESSION['cart']['packes'][$idPack]);
+        }
+
+    }
+    else if ($idTariff == '')
+    {
+        $_SESSION['cart']['quantity']--;
+        unset($_SESSION['cart']['packes'][$idPack]);
+    }
+}
+
+
+/*
+ * MODAL WINDOWS
+ */
+
+
+function printModalWindow($name)
+{
+    switch ($name)
+    {
+        case 'addNewTariff':
+            echo '<div class="bg_div_cont" id="tariffAdded" title="–í—ã –¥–æ–±–∞–≤–∏–ª–∏ —Ç–æ–≤–∞—Ä –≤ –∫–æ—Ä–∑–∏–Ω—É">';
+            break;
+        case 'addNewPhone':
+            echo '<div class="bg_div_cont" id="phoneAdded" title="–í—ã –¥–æ–±–∞–≤–∏–ª–∏ —Ç–æ–≤–∞—Ä –≤ –∫–æ—Ä–∑–∏–Ω—É">';
+            break;
+    }
+?>
+    <h4><?=isset($_SESSION['cart']['latest']['tariff'])?stripslashes($_SESSION['cart']['latest']['tariff']['name']):'–ë–µ–∑ —Ç–∞—Ä–∏—Ñ–∞'?></h4>
+    <table class="info_table" border="0" cellspacing="0" cellpadding="10" align="center">
+    <?php
+        if (isset($_SESSION['cart']['latest']['tariff']))
+        {
+    ?>
+            <tr>
+                <td class="first">–ü–ª–∞—Ç–∞ –∑–∞ –ø–æ–¥–∫–ª—é—á–µ–Ω–∏–µ</td>
+                <td class="last"><?=$_SESSION['cart']['latest']['tariff'][2]?> —Ä—É–±.</td>
+            </tr>
+            <tr>
+                <td class="first">–ú–∏–Ω–∏–º–∞–ª—å–Ω—ã–π –ø–µ—Ä–≤–æ–Ω–∞—á–∞–ª—å–Ω—ã–π –≤–∑–Ω–æ—Å</td>
+                <td class="last">500 —Ä—É–±.</td>
+            </tr>
+    <?php
+        }
+
+        if (isset($_SESSION['cart']['latest']['phone']))
+        {
+    ?>
+            <tr>
+                <td class="first"><?=stripslashes($_SESSION['cart']['latest']['phone']['number']);?></td>
+                <td class="last"><?=$_SESSION['cart']['latest']['phone']['cost']?></td>
+            </tr>
+    <?php
+        }
+    ?>
+    </table>
+    </div>
+<?php
+
 }

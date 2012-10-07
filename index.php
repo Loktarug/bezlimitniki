@@ -8,7 +8,7 @@ include_once('engine/buttonsReaction.php');
 
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -16,17 +16,18 @@ include_once('engine/buttonsReaction.php');
     <meta name="keywords" content="Безлимитные тарифы"/>
     <meta name="description" content="Безлимитные тарифы"/>
     <base href=""/>
-    <link rel="stylesheet" href="SpryAssets/SpryTabbedPanels.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="style.css"/>
-    <link rel="stylesheet" href="slider.css" type="text/css" />
-
+    <link rel="stylesheet" href="js/SpryAssets/SpryTabbedPanels.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" href="css/slider/slider.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/css/themes/ui-lightness/jquery-ui-1.8.24.custom.css">
     <!-- нужно для таблиц с тарифами -->
-    <script src="SpryAssets/SpryTabbedPanels.js" type="text/javascript"></script>
+    <script src="js/SpryAssets/SpryTabbedPanels.js" type="text/javascript"></script>
     <!-- нужно для слайдера -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script>
-    <script src="http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js" type="text/javascript"></script>
-    <script src="source/slides.min.jquery.js" type="text/javascript"></script>
-    <script type="text/javascript">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js" type="text/javascript"></script>
+    <!--<script src="http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js" type="text/javascript"></script>-->
+    <!--<script src="js/slides/slides.min.jquery.js" type="text/javascript"></script>-->
+    <!--<script type="text/javascript">
         $(function(){
             $('#slides').slides({
                 preload: true,
@@ -36,9 +37,10 @@ include_once('engine/buttonsReaction.php');
                 hoverPause: true
             });
         });
-    </script>
+    </script>-->
 </head>
 <body>
+<?php include_once('blocks/modalWindows.php'); ?>
 <table id="main" cellspacing="0" cellpadding="0" border="0" align="center">
 <tr>
     <td colspan="3">
@@ -124,13 +126,6 @@ include_once('engine/buttonsReaction.php');
 include ("blocks/content.php");
 ?>
 
-<script type="text/javascript">
-    <!--
-    var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanelsMTS");
-    var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanelsBeeline");
-    var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanelsMegafon");
-    //-->
-</script>
 <div class="clear"></div>
 
 
