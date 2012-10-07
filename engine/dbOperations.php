@@ -331,6 +331,7 @@ function dbGetTariffCommonInfo ($structure)
         $STH = $DBH->prepare($sql);
         $STH->execute($structure);
         while($row = $STH->fetch(PDO::FETCH_NAMED)) {
+            $tariff['id'] = $row['id'];
             $tariff['name'] = $row['name'];
             $tariff['description'] = $row['shortDescription'];
             $tariff['idOperator'] = $row['idOperator'];
@@ -358,10 +359,10 @@ function dbGetTariffsCommonInfo ($type)
             switch (array_search($type, $types))
             {
                 case 0:
-                    $sql = 'SELECT headers.id, headers.shortDescription, headers.idOperator, headers.name, headers.idOperator, fields.value, fields.classField FROM headers LEFT JOIN sections ON headers.id = sections.idTariff LEFT JOIN subSections ON sections.id = subSections.idSection LEFT JOIN fields ON subSections.id = fields.idSubSection WHERE headers.isFederal = 1 AND fields.classField > 0';
+                    $sql = 'SELECT headers.id, headers.shortDescription, headers.idOperator, headers.name, headers.idOperator, fields.value, fields.classField FROM headers LEFT JOIN sections ON headers.id = sections.idTariff LEFT JOIN subSections ON sections.id = subSections.idSection LEFT JOIN fields ON subSections.id = fields.idSubSection WHERE headers.showAsMain = 1 AND headers.isFederal = 1 AND fields.classField > 0';
                     break;
                 case 1:
-                    $sql = 'SELECT headers.id, headers.shortDescription, headers.idOperator, headers.name, headers.idOperator, fields.value, fields.classField FROM headers LEFT JOIN sections ON headers.id = sections.idTariff LEFT JOIN subSections ON sections.id = subSections.idSection LEFT JOIN fields ON subSections.id = fields.idSubSection WHERE headers.isDirect = 1 AND fields.classField > 0';
+                    $sql = 'SELECT headers.id, headers.shortDescription, headers.idOperator, headers.name, headers.idOperator, fields.value, fields.classField FROM headers LEFT JOIN sections ON headers.id = sections.idTariff LEFT JOIN subSections ON sections.id = subSections.idSection LEFT JOIN fields ON subSections.id = fields.idSubSection WHERE headers.showAsMain = 1 AND headers.isDirect = 1 AND fields.classField > 0';
                     break;
             }
             $STH = $DBH->prepare($sql);
