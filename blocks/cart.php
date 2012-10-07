@@ -7,15 +7,15 @@
         {
         ?>
             <div class="bg_div_cont">
-                <h4><?=isset($pack['tariff'])?stripslashes($pack['tariff']['name']):'Без тарифа'?></h4>
+                <h4><?=isset($pack['tariff'])?stripslashes($pack['tariff']['name']):'Без тарифа'?><a href="index.php?p=cart&delete=tariff&id=<?=$pack['tariff']['id']?>" ><img src="/img/fatcow/16x16/cross.png" width="16" height="16" alt="Удалить тариф" align="right"></a></h4>
                 <table class="info_table" border="0" cellspacing="0" cellpadding="10" align="center">
 <?php
                     if (isset($pack['tariff']))
                     {
 ?>
                         <tr>
-                            <td class="first">Абонентская плата</td>
-                            <td class="last"><?=$pack['tariff'][1]?> руб.</td>
+                            <td class="first">Плата за подключение</td>
+                            <td class="last"><?=$pack['tariff'][2]?> руб.</td>
                         </tr>
                         <tr>
                             <td class="first">Минимальный первоначальный взнос</td>
@@ -29,7 +29,7 @@
 ?>
                         <tr>
                             <td class="first"><?=stripslashes($pack['phone']['number']);?></td>
-                            <td class="last"><?=$pack['phone']['cost']?></td>
+                            <td class="last"><?=$pack['phone']['cost']?><a href="index.php?p=cart&delete=tariff&id=<?=$pack['phone']['numberint']?>" ><img src="/img/fatcow/16x16/phone_delete.png" width="16" height="16" alt="Удалить номер" align="right"></a></td>
                         </tr>
 <?php
                     }
