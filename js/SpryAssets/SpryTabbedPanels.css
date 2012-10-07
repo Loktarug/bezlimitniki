@@ -82,21 +82,21 @@
 }
 
 .l_bee{
-background-image:url(../images/logotip_beeline.png);
+background-image:url(/images/logotip_beeline.png);
 background-repeat:no-repeat;
 background-position:7px 3px;
 padding-left:33px;
 }
 
 .l_meg{
-background-image:url(../images/logotip_megafon.png);
+background-image:url(/images/logotip_megafon.png);
 background-repeat:no-repeat;
 background-position:7px 3px;
 padding-left:33px;
 }
 
 .l_mts{
-background-image:url(../images/logotip_mts.png);
+background-image:url(/images/logotip_mts.png);
 background-repeat:no-repeat;
 background-position:7px 3px;
 padding-left:33px;

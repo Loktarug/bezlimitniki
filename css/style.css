@@ -109,19 +109,19 @@ border-bottom:3px solid #fd031a;
 padding:15px;
 }
 
-/* tarifs_table_2 */
-.tarifs_table_2{
+/* tariffs_table_2 */
+.tariffs_table_2{
 width:100%;
 background:white;
 margin-bottom:15px;
 }
 
-.tarifs_table_2 .tt_img_td{
+.tariffs_table_2 .tt_img_td{
 width:100px;
 text-align:center;
 }
 
-.tarifs_table_2 .tt_title{
+.tariffs_table_2 .tt_title{
 text-align:left;
 font-size:12pt;
 font-weight:bold;
@@ -129,11 +129,11 @@ height:40px;
 vertical-align:top;
 }
 
-.tarifs_table_2 .tt_content{
+.tariffs_table_2 .tt_content{
 font-size:10pt;
 }
 
-.tarifs_table_2 .tt_details{
+.tariffs_table_2 .tt_details{
 text-align:right;
 }
 
@@ -235,7 +235,7 @@ font-size:10pt;
     margin-right:10px;
     padding-right:10px;
     text-transform:uppercase;
-    background:url(images/pt.png) no-repeat right center;
+    background:url(../images/pt.png) no-repeat right center;
 }
 
 .top_menu li:last-child{
@@ -263,7 +263,7 @@ font-size:10pt;
 /* RIGHT_LINE */
 #right_line{
     width:20px;
-    background-img:url(images/right_line_bg.jpg);
+    background-img:url(../images/right_line_bg.jpg);
 	background-repeat:no-repeat;
 	background-position:right top;
 	background-color:white;
@@ -278,7 +278,7 @@ font-size:10pt;
 #left_menu ul{
     position:relative;
     left:-11px;
-    background:url(images/left_menu_bg.jpg) repeat-y right top;
+    background:url(../images/left_menu_bg.jpg) repeat-y right top;
     list-style-type:none;
     margin:0px;
     padding:0px;
@@ -294,7 +294,7 @@ font-size:10pt;
     padding-top:10px;
     margin-bottom:15px;
     line-height:10pt;
-    background:url(images/left_menu_a.png) no-repeat left top;
+    background:url(../images/left_menu_a.png) no-repeat left top;
     text-decoration:none;
 }
 
@@ -302,7 +302,7 @@ font-size:10pt;
     display:block;
     position:relative;
     left:-21px;
-    background:url(images/select_t.png) no-repeat left top;
+    background:url(../images/select_t.png) no-repeat left top;
     width:191px;
     height:80px;
     line-height:65px;
@@ -373,7 +373,7 @@ height:30px;
 line-height:29px;
 text-align:center;
 text-decoration:none;
-background:url(images/page_button_normal.jpg) no-repeat center center;
+background:url(../images/page_button_normal.jpg) no-repeat center center;
 border:1px solid #cccccc;
 -webkit-border-radius: 2px;
 -moz-border-radius: 2px;
@@ -396,7 +396,7 @@ box-shadow:  0px 0px 3px 0.1px #b5b5b5;
 }
 
 .page_buttons .activ{
-background:url(images/page_button_activ.jpg) no-repeat center center;
+background:url(../images/page_button_activ.jpg) no-repeat center center;
 border:1px solid #888888;
 }
 
@@ -404,19 +404,19 @@ border:1px solid #888888;
 .megagon_link{
 padding-left:25px;
 padding-right:25px;
-background:url(images/logotip_megafon.png) no-repeat left center;
+background:url(../images/logotip_megafon.png) no-repeat left center;
 }
 
 .mts_link{
 padding-left:25px;
 padding-right:25px;
-background:url(images/logotip_mts.png) no-repeat left center;
+background:url(../images/logotip_mts.png) no-repeat left center;
 }
 
 .beeline_link{
 padding-left:25px;
 padding-right:25px;
-background:url(images/logotip_beeline.png) no-repeat left center;
+background:url(../images/logotip_beeline.png) no-repeat left center;
 }
 
 /* CART */
