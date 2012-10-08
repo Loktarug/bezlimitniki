@@ -19,8 +19,8 @@ $tariffsDirect = dbGetTariffsInfoByType($structure);
 $beelineTable = '<div id="TabbedPanelsBeeline" class="TabbedPanels">
     <ul class="TabbedPanelsTabGroup">
         <li class="TabbedPanelsTab" tabindex="0">Федеральные</li>
-        <li class="TabbedPanelsTab" tabindex="0">Прямые</li>
-        <li class="TabbedPanelsTab" tabindex="0">Все</li>
+        <li class="TabbedPanelsTab" tabindex="1">Прямые</li>
+        <li class="TabbedPanelsTab" tabindex="2">Все</li>
     </ul>
     <div class="TabbedPanelsContentGroup">
         <div class="TabbedPanelsContent">';
@@ -28,8 +28,8 @@ $beelineTable = '<div id="TabbedPanelsBeeline" class="TabbedPanels">
 $megafonTable = '<div id="TabbedPanelsMegafon" class="TabbedPanels">
     <ul class="TabbedPanelsTabGroup">
         <li class="TabbedPanelsTab" tabindex="0">Федеральные</li>
-        <li class="TabbedPanelsTab" tabindex="0">Прямые</li>
-        <li class="TabbedPanelsTab" tabindex="0">Все</li>
+        <li class="TabbedPanelsTab" tabindex="1">Прямые</li>
+        <li class="TabbedPanelsTab" tabindex="2">Все</li>
     </ul>
     <div class="TabbedPanelsContentGroup">
         <div class="TabbedPanelsContent">';
@@ -37,8 +37,8 @@ $megafonTable = '<div id="TabbedPanelsMegafon" class="TabbedPanels">
 $mtsTable = '<div id="TabbedPanelsMTS" class="TabbedPanels">
     <ul class="TabbedPanelsTabGroup">
         <li class="TabbedPanelsTab" tabindex="0">Федеральные</li>
-        <li class="TabbedPanelsTab" tabindex="0">Прямые</li>
-        <li class="TabbedPanelsTab" tabindex="0">Все</li>
+        <li class="TabbedPanelsTab" tabindex="1">Прямые</li>
+        <li class="TabbedPanelsTab" tabindex="2">Все</li>
     </ul>
     <div class="TabbedPanelsContentGroup">
         <div class="TabbedPanelsContent">';
@@ -66,7 +66,7 @@ $megafonTable .= '</div>
        <div class="TabbedPanelsContent">';
 
 $mtsTable .= '</div>
-          <div class="TabbedPanelsContent">';
+       <div class="TabbedPanelsContent">';
 
 
 
@@ -89,19 +89,33 @@ foreach ($tariffsDirect as $idTariff => $tariff)
 $beelineTable .= '</div>
        <div class="TabbedPanelsContent">Content 3</div>
      </div>
-   </div>';
+   </div>
+   <script type="text/javascript">
+       <!--
+       var TabbedPanelsBeeline = new Spry.Widget.TabbedPanels("TabbedPanelsBeeline");
+       //-->
+   </script>';
 
 $megafonTable .= '</div>
        <div class="TabbedPanelsContent">Content 3</div>
      </div>
-   </div>';
+   </div>
+   <script type="text/javascript">
+       <!--
+       var TabbedPanelsMegafon = new Spry.Widget.TabbedPanels("TabbedPanelsMegafon");
+       //-->
+   </script>';
 
 
 
 $mtsTable .= '</div>
        <div class="TabbedPanelsContent">Content 3</div>
      </div>
-   </div>';
+   </div><script type="text/javascript">
+       <!--
+       var TabbedPanelsMTS = new Spry.Widget.TabbedPanels("TabbedPanelsMTS");
+       //-->
+   </script>';
 
 
 switch ($operatorPreview)
@@ -141,10 +155,10 @@ function getLi ($id, $tariff)
             $imgLogo = 'mts_smalllogo.jpg';
             break;
     }
-    return '<table class="tarifs_table_2" border="0" cellspacing="4" cellpadding="4">
+    return '<table class="tariffs_table_2" border="0" cellspacing="4" cellpadding="4">
                  <tr>
-                   <td rowspan="3" class="tt_img_td" valign="top"><a href="#"><img align="center" src="images/'.$imgLogo.'" alt="'.$tariff['name'].'" width="100" border="0"></a></td>
-                   <td class="tt_title"><a href="index.php?p=tariffs&opid='.$tariff['idOperator'][0].'&tariff='.$id.'">'.$tariff['name'].'</a></td>
+                   <td rowspan="3" class="tt_img_td" valign="top"><a href="#"><img align="center" src="/images/'.$imgLogo.'" alt="'.$tariff['name'].'" width="100" border="0"></a></td>
+                   <td class="tt_title"><a href="/index.php?p=tariffs&opid='.$tariff['idOperator'][0].'&tariff='.$id.'">'.$tariff['name'].'</a></td>
                  </tr>
                  <tr>
                    <td class="tt_content">
@@ -152,7 +166,7 @@ function getLi ($id, $tariff)
        			</td>
                  </tr>
                  <tr>
-                   <td class="tt_details"><a href="index.php?p=tariffs&amp;tariff='.$id.'" class="lnk">подробнее</a></td>
+                   <td class="tt_details"><a href="/index.php?p=tariffs&opid='.$tariff['idOperator'][0].'&tariff='.$id.'" class="lnk">подробнее</a></td>
                  </tr>
                </table>';
 }
