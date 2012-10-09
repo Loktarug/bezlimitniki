@@ -14,6 +14,10 @@ $structure['isDirect'] = 1;
 $structure['isFederal'] = 0;
 $tariffsDirect = dbGetTariffsInfoByType($structure);
 
+$structure['isDirect'] = 1;
+$structure['isFederal'] = 1;
+$tariffsBoth = dbGetTariffsInfoByType($structure);
+
 
 
 $beelineTable = '<div id="TabbedPanelsBeeline" class="TabbedPanels">
@@ -45,7 +49,7 @@ $mtsTable = '<div id="TabbedPanelsMTS" class="TabbedPanels">
 
 foreach ($tariffsFederal as $idTariff => $tariff)
 {
-    switch ($tariff['idOperator'][0])
+    switch ($tariff['idOperator'])
     {
         case 1:
             $beelineTable .= getLi($idTariff, $tariff);
@@ -72,7 +76,7 @@ $mtsTable .= '</div>
 
 foreach ($tariffsDirect as $idTariff => $tariff)
 {
-    switch ($tariff['idOperator'][0])
+    switch ($tariff['idOperator'])
     {
         case 1:
             $beelineTable .= getLi($idTariff, $tariff);
@@ -87,7 +91,31 @@ foreach ($tariffsDirect as $idTariff => $tariff)
 }
 
 $beelineTable .= '</div>
-       <div class="TabbedPanelsContent">Content 3</div>
+       <div class="TabbedPanelsContent">';
+
+$megafonTable .= '</div>
+       <div class="TabbedPanelsContent">';
+
+$mtsTable .= '</div>
+       <div class="TabbedPanelsContent">';
+
+foreach ($tariffsBoth as $idTariff => $tariff)
+{
+    switch ($tariff['idOperator'])
+    {
+        case 1:
+            $beelineTable .= getLi($idTariff, $tariff);
+            break;
+        case 2:
+            $megafonTable .= getLi($idTariff, $tariff);
+            break;
+        case 3:
+            $mtsTable .= getLi($idTariff, $tariff);
+            break;
+    }
+}
+
+$beelineTable .= '</div>
      </div>
    </div>
    <script type="text/javascript">
@@ -97,7 +125,6 @@ $beelineTable .= '</div>
    </script>';
 
 $megafonTable .= '</div>
-       <div class="TabbedPanelsContent">Content 3</div>
      </div>
    </div>
    <script type="text/javascript">
@@ -109,7 +136,6 @@ $megafonTable .= '</div>
 
 
 $mtsTable .= '</div>
-       <div class="TabbedPanelsContent">Content 3</div>
      </div>
    </div><script type="text/javascript">
        <!--
@@ -143,26 +169,36 @@ switch ($operatorPreview)
 function getLi ($id, $tariff)
 {
     $imgLogo = '';
-    switch ($tariff['idOperator'][0])
+    switch ($tariff['idOperator'])
     {
         case 1:
-            $imgLogo = 'beeline_smalllogo.jpg';
+            if (isset($tariff['image']))
+                $imgLogo = '/img/icons/beeline/'.$tariff['image'];
+            else
+                $imgLogo = '/images/beeline_smalllogo.jpg';
             break;
         case 2:
-            $imgLogo = 'megafon_smalllogo.jpg';
+            if (isset($tariff['image']))
+                $imgLogo = '/img/icons/megafon/'.$tariff['image'];
+            else
+            $imgLogo = '/images/megafon_smalllogo.jpg';
             break;
         case 3:
-            $imgLogo = 'mts_smalllogo.jpg';
+            if (isset($tariff['image']))
+                $imgLogo = '/img/icons/mts/'.$tariff['image'];
+            else
+            $imgLogo = '/images/mts_smalllogo.jpg';
             break;
     }
+
     return '<table class="tariffs_table_2" border="0" cellspacing="4" cellpadding="4">
                  <tr>
-                   <td rowspan="3" class="tt_img_td" valign="top"><a href="#"><img align="center" src="/images/'.$imgLogo.'" alt="'.$tariff['name'].'" width="100" border="0"></a></td>
+                   <td rowspan="3" class="tt_img_td" valign="top"><a href="/index.php?p=tariffs&opid='.$tariff['idOperator'][0].'&tariff='.$id.'"><img align="center" src="'.$imgLogo.'" alt="'.$tariff['name'].'" width="100" border="0"></a></td>
                    <td class="tt_title"><a href="/index.php?p=tariffs&opid='.$tariff['idOperator'][0].'&tariff='.$id.'">'.$tariff['name'].'</a></td>
                  </tr>
                  <tr>
                    <td class="tt_content">
-                   <p>'.$tariff['description'].'</p>
+                   '.nl2br($tariff['description']).'
        			</td>
                  </tr>
                  <tr>

@@ -39,9 +39,13 @@
                     modal:true,
                     position: 'top',
                     show: 'slide',
-                    buttons:{ "Закрыть":function () {
+                    buttons:{ "Перейти к оплате":function () {
                         $(this).dialog("close");
-                    } }
+                        window.location.replace("/index.php?p=cart");
+                    },
+                    "Закрыть":function () {
+                        $(this).dialog("close");
+                    }}
                 });
             });
         </script>

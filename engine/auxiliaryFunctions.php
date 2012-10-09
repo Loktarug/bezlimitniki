@@ -171,6 +171,15 @@ function printModalWindow($name)
             </tr>
     <?php
         }
+        else
+        {
+    ?>
+            <tr>
+                <td class="first"><a href="/index.php?p=tariffs&opid=<?=$_SESSION['cart']['latest']['phone']['idOperator']?>&operator=preview">Выбрать тариф</a></td>
+                <td class="last"></td>
+            </tr>
+    <?php
+        }
 
         if (isset($_SESSION['cart']['latest']['phone']))
         {
@@ -178,6 +187,15 @@ function printModalWindow($name)
             <tr>
                 <td class="first"><?=stripslashes($_SESSION['cart']['latest']['phone']['number']);?></td>
                 <td class="last"><?=$_SESSION['cart']['latest']['phone']['cost']?></td>
+            </tr>
+    <?php
+        }
+        else
+        {
+    ?>
+            <tr>
+                <td class="first"><a href="/index.php?p=numbers&opid=<?=$_SESSION['cart']['latest']['tariff']['idOperator']?>">Выбрать номер</a></td>
+                <td class="last"></td>
             </tr>
     <?php
         }

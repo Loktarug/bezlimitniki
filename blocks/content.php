@@ -28,7 +28,7 @@
     }
     if ($_REQUEST['p']=='cart')
     {
-        include ('blocks/cart.php');
+        include ('cart.php');
     }
     if ($_REQUEST['p']=='delivery')
     {

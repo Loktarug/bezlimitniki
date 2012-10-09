@@ -176,30 +176,15 @@ function dbGetPhoneByNumberInt($structure)
 function dbGetPhones($structure)
 {
     global $DBH;
-    $phones = array ();
+    $offset = ($structure['page']*50-50);
+    $phonesInfo = array ();
+    $phones = array();
+    $quantity = 0;
     try {
-        $STH = $DBH->prepare("SELECT idOperator, number, numberint, cost, numberType FROM phones WHERE numberType = :numberType ORDER BY cost ASC LIMIT 0,50");
-        $STH->execute($structure);
-        while($row = $STH->fetch()) {
-            $phones[$row['numberint']]['idOperator'] = $row['idOperator'];
-            $phones[$row['numberint']]['number'] = $row['number'];
-            $phones[$row['numberint']]['cost'] = $row['cost'];
-            $phones[$row['numberint']]['numberType'] = $row['numberType'];
-        }
-    }
-    catch(PDOException $e) {
-        errorMessageHandler($e);
-    }
-    return $phones;
-}
-
-function dbGetPhonesByOperator($structure)
-{
-    global $DBH;
-    $phones = array ();
-    try {
-        $STH = $DBH->prepare("SELECT idOperator, number, numberint, cost, numberType FROM phones WHERE idOperator = :idOperator AND numberType = :numberType ORDER BY cost ASC LIMIT 0,50");
-        $STH->execute($structure);
+        $STH = $DBH->prepare("SELECT idOperator, number, numberint, cost, numberType FROM phones WHERE numberType = :numberType ORDER BY cost ASC LIMIT 50 OFFSET :offset");
+        $STH->bindParam(':numberType', $structure['numberType'], PDO::PARAM_INT);
+        $STH->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $STH->execute();
         while($row = $STH->fetch()) {
             $phones[$row['numberint']]['idOperator'] = $row['idOperator'];
             $phones[$row['numberint']]['number'] = $row['number'];
@@ -211,7 +196,59 @@ function dbGetPhonesByOperator($structure)
     catch(PDOException $e) {
         errorMessageHandler($e);
     }
-    return $phones;
+    try {
+        $STH = $DBH->prepare("SELECT id FROM phones WHERE numberType = :numberType");
+        $STH->bindParam(':numberType', $structure['numberType'], PDO::PARAM_INT);
+        $STH->execute();
+        $quantity = $STH->rowCount();
+
+    }
+    catch(PDOException $e) {
+        errorMessageHandler($e);
+    }
+    $phonesInfo['phones'] = $phones;
+    $phonesInfo['quantity'] = $quantity;
+    return $phonesInfo;
+}
+
+function dbGetPhonesByOperator($structure)
+{
+    global $DBH;
+    $offset = ($structure['page']*50-50);
+    $phonesInfo = array ();
+    $phones = array();
+    $quantity = 0;
+    try {
+        $STH = $DBH->prepare("SELECT idOperator, number, numberint, cost, numberType FROM phones WHERE idOperator = :idOperator AND numberType = :numberType ORDER BY cost ASC LIMIT 50 OFFSET :offset");
+        $STH->bindParam(':idOperator', $structure['idOperator'], PDO::PARAM_INT);
+        $STH->bindParam(':numberType', $structure['numberType'], PDO::PARAM_INT);
+        $STH->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $STH->execute();
+        while($row = $STH->fetch()) {
+            $phones[$row['numberint']]['idOperator'] = $row['idOperator'];
+            $phones[$row['numberint']]['number'] = $row['number'];
+            $phones[$row['numberint']]['numberint'] = $row['numberint'];
+            $phones[$row['numberint']]['cost'] = $row['cost'];
+            $phones[$row['numberint']]['numberType'] = $row['numberType'];
+        }
+    }
+    catch(PDOException $e) {
+        errorMessageHandler($e);
+    }
+
+    try {
+        $STH = $DBH->prepare("SELECT id FROM phones WHERE idOperator = :idOperator AND numberType = :numberType");
+        $STH->bindParam(':idOperator', $structure['idOperator'], PDO::PARAM_INT);
+        $STH->bindParam(':numberType', $structure['numberType'], PDO::PARAM_INT);
+        $STH->execute();
+        $quantity = $STH->rowCount();
+    }
+    catch(PDOException $e) {
+        errorMessageHandler($e);
+    }
+    $phonesInfo['phones'] = $phones;
+    $phonesInfo['quantity'] = $quantity;
+    return $phonesInfo;
 }
 
 function dbGetTariffShort()
@@ -271,13 +308,15 @@ function dbGetTariffsInfoByType($structure)
     global $DBH;
     $fields = array ();
     try {
-        $STH = $DBH->prepare("SELECT headers.id, headers.shortDescription, headers.idOperator, headers.name, headers.idOperator FROM headers WHERE (headers.isDirect = :isDirect AND headers.isFederal = :isFederal) AND headers.actual = 1");
+        $STH = $DBH->prepare("SELECT headers.id, headers.shortDescription, headers.idOperator, headers.name, headers.isDirect, headers.isFederal, headers.image FROM headers WHERE (headers.isDirect = :isDirect OR headers.isFederal = :isFederal) AND headers.actual = 1");
         $STH->execute($structure);
-        $tariff = $STH->fetch(PDO::FETCH_ASSOC);
         while($row = $STH->fetch(PDO::FETCH_NAMED)) {
             $fields[$row['id']]['name'] = $row['name'];
             $fields[$row['id']]['description'] = $row['shortDescription'];
             $fields[$row['id']]['idOperator'] = $row['idOperator'];
+            $fields[$row['id']]['isDirect'] = $row['isDirect'];
+            $fields[$row['id']]['isFederal'] = $row['isFederal'];
+            $fields[$row['id']]['image'] = $row['image'];
         }
     }
     catch(PDOException $e) {
@@ -359,10 +398,10 @@ function dbGetTariffsCommonInfo ($type)
             switch (array_search($type, $types))
             {
                 case 0:
-                    $sql = 'SELECT headers.id, headers.shortDescription, headers.idOperator, headers.name, headers.idOperator, fields.value, fields.classField FROM headers LEFT JOIN sections ON headers.id = sections.idTariff LEFT JOIN subSections ON sections.id = subSections.idSection LEFT JOIN fields ON subSections.id = fields.idSubSection WHERE headers.showAsMain = 1 AND headers.isFederal = 1 AND fields.classField > 0';
+                    $sql = 'SELECT headers.id, headers.shortDescription, headers.idOperator, headers.name, headers.idOperator, fields.value, fields.classField, fields.valueType FROM headers LEFT JOIN sections ON headers.id = sections.idTariff LEFT JOIN subSections ON sections.id = subSections.idSection LEFT JOIN fields ON subSections.id = fields.idSubSection WHERE headers.showAsMain = 1 AND headers.isFederal = 1 AND fields.classField > 0';
                     break;
                 case 1:
-                    $sql = 'SELECT headers.id, headers.shortDescription, headers.idOperator, headers.name, headers.idOperator, fields.value, fields.classField FROM headers LEFT JOIN sections ON headers.id = sections.idTariff LEFT JOIN subSections ON sections.id = subSections.idSection LEFT JOIN fields ON subSections.id = fields.idSubSection WHERE headers.showAsMain = 1 AND headers.isDirect = 1 AND fields.classField > 0';
+                    $sql = 'SELECT headers.id, headers.shortDescription, headers.idOperator, headers.name, headers.idOperator, fields.value, fields.classField, fields.valueType FROM headers LEFT JOIN sections ON headers.id = sections.idTariff LEFT JOIN subSections ON sections.id = subSections.idSection LEFT JOIN fields ON subSections.id = fields.idSubSection WHERE headers.showAsMain = 1 AND headers.isDirect = 1 AND fields.classField > 0';
                     break;
             }
             $STH = $DBH->prepare($sql);
@@ -372,6 +411,7 @@ function dbGetTariffsCommonInfo ($type)
                 $fields[$row['id']]['description'] = $row['shortDescription'];
                 $fields[$row['id']]['idOperator'] = $row['idOperator'];
                 $fields[$row['id']][$row['classField']]['value'] = $row['value'];
+                $fields[$row['id']]['valueType'] = $row['valueType'];
             }
         }
         catch(PDOException $e) {
