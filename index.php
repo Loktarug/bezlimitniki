@@ -7,8 +7,7 @@ include_once('engine/auxiliaryFunctions.php');
 include_once('engine/buttonsReaction.php');
 
 ?>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -16,29 +15,50 @@ include_once('engine/buttonsReaction.php');
     <meta name="keywords" content="Безлимитные тарифы, МТС, Мегафон, Билайн"/>
     <meta name="description" content="Безлимитные тарифы МТС, Мегафон и Билайн"/>
     <base href=""/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="css/iView/styles.css" />
+    <link rel="stylesheet" href="css/iView/iview.css" />
+    <link rel="stylesheet" href="css/iView/skin/style.css" />
     <link rel="stylesheet" href="js/SpryAssets/SpryTabbedPanels.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <link rel="stylesheet" href="css/slider/slider.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="/css/themes/ui-lightness/jquery-ui-1.8.24.custom.css">
     <!-- нужно для таблиц с тарифами -->
     <script src="js/SpryAssets/SpryTabbedPanels.js" type="text/javascript"></script>
-    <!-- нужно для слайдера -->
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ru'}</script>
-    <!--<script src="http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js" type="text/javascript"></script>-->
-    <!--<script src="js/slides/slides.min.jquery.js" type="text/javascript"></script>-->
-    <!--<script type="text/javascript">
-        $(function(){
-            $('#slides').slides({
-                preload: true,
-                preloadImage: 'img/loading.gif',
-                play: 5000,
-                pause: 2500,
-                hoverPause: true
+
+    <!--iView-->
+    <script type="text/javascript" src="js/iView/raphael-min.js"></script>
+    <script type="text/javascript" src="js/iView/jquery.easing.js"></script>
+
+    <script src="js/iView/iview.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#iview').iView({
+                pauseTime: 7000,
+                pauseOnHover: true,
+                directionNav: false,
+                directionNavHide: false,
+                controlNav: true,
+                controlNavNextPrev: false,
+                controlNavThumbs: true,
+                timer: "Bar",
+                timerDiameter: 120,
+                timerPadding: 3,
+                timerStroke: 4,
+                timerBarStroke: 0,
+                timerColor: "#0F0",
+                timerPosition: "bottom-right",
+                timerX: 15,
+                timerY: 60
             });
         });
-    </script>-->
+    </script>
+
 
     <script type="text/javascript">
 
@@ -117,28 +137,6 @@ include_once('engine/buttonsReaction.php');
     </ul>
 </td>
 <td id="content" valign="top">
-<!-- КОНТЕНТ НАЧАЛО -->
-<!-- СЛАЙДЕР НАЧАЛО -->
-<!--<div id="container">
-    <div id="example">
-        <img src="img/new-ribbon.png" width="112" height="112" alt="New Ribbon" id="ribbon"/>
-        <div id="slides">
-            <div class="slides_container">
-                <a href="#" title="145.365 - Happy Bokeh Thursday! | Flickr - Photo Sharing!" target="_blank"><img src="img/slide-1.jpg" width="570" height="270" alt="Slide 1"/></a>
-                <a href="#" title="Taxi | Flickr - Photo Sharing!" target="_blank"><img src="img/slide-2.jpg" width="570" height="270" alt="Slide 2"/></a>
-                <a href="#" title="Happy Bokeh raining Day | Flickr - Photo Sharing!" target="_blank"><img src="img/slide-3.jpg" width="570" height="270" alt="Slide 3"/></a>
-                <a href="#" title="We Eat Light | Flickr - Photo Sharing!" target="_blank"><img src="img/slide-4.jpg" width="570" height="270" alt="Slide 4"/></a>
-                <a href="#" title="“I must go down to the sea again, to the lonely sea and the sky; and all I ask is a tall ship and a star to steer her by.” | Flickr - Photo Sharing!" target="_blank"><img src="img/slide-5.jpg" width="570" height="270" alt="Slide 5"/></a>
-                <a href="#" title="twelve.inch | Flickr - Photo Sharing!" target="_blank"><img src="img/slide-6.jpg" width="570" height="270" alt="Slide 6"/></a>
-                <a href="#" title="Save my love for loneliness | Flickr - Photo Sharing!" target="_blank"><img src="img/slide-7.jpg" width="570" height="270" alt="Slide 7"/></a>
-            </div>
-            <a href="#" class="prev"><img src="img/arrow-prev.png" width="24" height="43" alt="Arrow Prev"/></a>
-            <a href="#" class="next"><img src="img/arrow-next.png" width="24" height="43" alt="Arrow Next"/></a>
-        </div>
-        <img src="img/example-frame.png" width="739" height="341" alt="Example Frame" id="frame"/>
-    </div>
-</div>-->
-
 <?php
 include ("blocks/content.php");
 ?>

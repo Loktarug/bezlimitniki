@@ -1,3 +1,36 @@
+<div class="container">
+    <div id="iview">
+        <div data-iview:thumbnail="/img/slider/leaderOnline_thumbs.png" data-iview:image="/img/slider/leaderOnline.png">
+            <div class="iview-caption caption1" data-x="100" data-y="300" data-transition="expandDown">Лидер - Онлайн</div>
+        </div>
+        <div data-iview:thumbnail="/img/slider/bisunessConnect_thumbs.png" data-iview:image="/img/slider/bisunessConnect.png" data-iview:transition="block-drop-random" data-iview:pausetime="2000">
+            <div class="iview-caption caption2" data-x="150" data-y="300" data-transition="expandRight">Интернет тариф: Бизнес коннект</div>
+        </div>
+        <div data-iview:thumbnail="/img/slider/ultima_thumbs.png" data-iview:image="/img/slider/ultima.png">
+            <div class="iview-caption caption3" data-x="350" data-y="300" data-transition="expandLeft">Ультима</div>
+        </div>
+        <div data-iview:thumbnail="/img/slider/country_thumbs.png" data-iview:image="/img/slider/country.png">
+            <div class="iview-caption caption1" data-x="100" data-y="300" data-transition="expandDown">Страна на связи</div>
+        </div>
+        <div data-iview:thumbnail="/img/slider/youth_thumbs.png" data-iview:image="/img/slider/youth.png" data-iview:transition="block-drop-random" data-iview:pausetime="2000">
+            <div class="iview-caption caption2" data-x="150" data-y="300" data-transition="expandRight">Молодежный</div>
+        </div>
+
+        <div data-iview:thumbnail="/img/slider/general_thumbs.png" data-iview:image="/img/slider/general.png">
+            <div class="iview-caption caption3" data-x="350" data-y="300" data-transition="expandLeft">Генеральный Extra-VIP</div>
+        </div>
+
+        <div data-iview:thumbnail="/img/slider/4g_thumbs.png" data-iview:image="/img/slider/4g.png">
+            <div class="iview-caption caption3" data-x="350" data-y="300" data-transition="expandLeft">Мегафон Онлайн 4G + LTE-модем</div>
+        </div>
+    </div>
+</div>
+
+
+    </br>
+
+
+
 <?php
 
     $federalTariffs = dbGetTariffsCommonInfo('federal');
