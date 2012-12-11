@@ -15,11 +15,6 @@ include_once('engine/buttonsReaction.php');
     <meta name="keywords" content="Безлимитные тарифы, МТС, Мегафон, Билайн"/>
     <meta name="description" content="Безлимитные тарифы МТС, Мегафон и Билайн"/>
     <base href=""/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="css/iView/styles.css" />
-    <link rel="stylesheet" href="css/iView/iview.css" />
-    <link rel="stylesheet" href="css/iView/skin/style.css" />
     <link rel="stylesheet" href="js/SpryAssets/SpryTabbedPanels.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <link rel="stylesheet" href="css/slider/slider.css" type="text/css" />
@@ -30,35 +25,7 @@ include_once('engine/buttonsReaction.php');
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'ru'}</script>
-
-    <!--iView-->
-    <script type="text/javascript" src="js/iView/raphael-min.js"></script>
-    <script type="text/javascript" src="js/iView/jquery.easing.js"></script>
-
-    <script src="js/iView/iview.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('#iview').iView({
-                pauseTime: 7000,
-                pauseOnHover: true,
-                directionNav: false,
-                directionNavHide: false,
-                controlNav: true,
-                controlNavNextPrev: false,
-                controlNavThumbs: true,
-                timer: "Bar",
-                timerDiameter: 120,
-                timerPadding: 3,
-                timerStroke: 4,
-                timerBarStroke: 0,
-                timerColor: "#0F0",
-                timerPosition: "bottom-right",
-                timerX: 15,
-                timerY: 60
-            });
-        });
-    </script>
-
+    <script type="text/javascript" src="/js/Cycle/cycle.js"></script>
 
     <script type="text/javascript">
 

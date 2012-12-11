@@ -1,33 +1,27 @@
-<div class="container">
-    <div id="iview">
-        <div data-iview:thumbnail="/img/slider/leaderOnline_thumbs.png" data-iview:image="/img/slider/leaderOnline.png">
-            <div class="iview-caption caption1" data-x="100" data-y="300" data-transition="expandDown">Лидер - Онлайн</div>
-        </div>
-        <div data-iview:thumbnail="/img/slider/bisunessConnect_thumbs.png" data-iview:image="/img/slider/bisunessConnect.png" data-iview:transition="block-drop-random" data-iview:pausetime="2000">
-            <div class="iview-caption caption2" data-x="150" data-y="300" data-transition="expandRight">Интернет тариф: Бизнес коннект</div>
-        </div>
-        <div data-iview:thumbnail="/img/slider/ultima_thumbs.png" data-iview:image="/img/slider/ultima.png">
-            <div class="iview-caption caption3" data-x="350" data-y="300" data-transition="expandLeft">Ультима</div>
-        </div>
-        <div data-iview:thumbnail="/img/slider/country_thumbs.png" data-iview:image="/img/slider/country.png">
-            <div class="iview-caption caption1" data-x="100" data-y="300" data-transition="expandDown">Страна на связи</div>
-        </div>
-        <div data-iview:thumbnail="/img/slider/youth_thumbs.png" data-iview:image="/img/slider/youth.png" data-iview:transition="block-drop-random" data-iview:pausetime="2000">
-            <div class="iview-caption caption2" data-x="150" data-y="300" data-transition="expandRight">Молодежный</div>
-        </div>
-
-        <div data-iview:thumbnail="/img/slider/general_thumbs.png" data-iview:image="/img/slider/general.png">
-            <div class="iview-caption caption3" data-x="350" data-y="300" data-transition="expandLeft">Генеральный Extra-VIP</div>
-        </div>
-
-        <div data-iview:thumbnail="/img/slider/4g_thumbs.png" data-iview:image="/img/slider/4g.png">
-            <div class="iview-caption caption3" data-x="350" data-y="300" data-transition="expandLeft">Мегафон Онлайн 4G + LTE-модем</div>
-        </div>
+<div style="height:380px">
+    <div id="slider">
+        <a href="/index.php?p=tariffs&tariff=3"><img src="/img/slider/leaderOnline.png" width="739" height="341" alt="МТС - Лидер онлайн"/></a>
+        <a href="/index.php?p=tariffs&tariff=12"><img src="/img/slider/bisunessConnect.png" width="739" height="341" alt="МТС - Интернет-тариф Бизнес коннект - подключение на micro-sim"/></a>
+        <a href="/index.php?p=tariffs&tariff=16"><img src="/img/slider/ultima.png" width="739" height="341" alt="БиЛайн - Ультима"/></a>
+        <a href="/index.php?p=tariffs&tariff=20"><img src="/img/slider/country.png" width="739" height="341" alt="БиЛайн - Страна на связи"/></a>
+        <a href="/index.php?p=tariffs&tariff=30"><img src="/img/slider/youth.png" width="739" height="341" alt="БиЛайн - Всё включено Молодёжный"/></a>
+        <a href="/index.php?p=tariffs&tariff=32"><img src="/img/slider/general.png" width="739" height="341" alt="Мегафон - Генеральный Extra-VIP"/></a>
+        <a href="/index.php?p=tariffs&tariff=48"><img src="/img/slider/4g.png" width="739" height="341" alt="Мегафон - Онлайн 4G + LTE-модем"/></a>
     </div>
-</div>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#slider').cycle({
+    		fx: 'fade'
+    	});
+    });
+    </script>
+
 
 
     </br>
+
+</div>
 
 
 
